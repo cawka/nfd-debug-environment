@@ -1,0 +1,18 @@
+python
+import sys
+for path in ['/opt/gdb-libstdcxx', '/opt/gdb-boost', '/opt/gdb-libcxx', '/vagrant']:
+    sys.path.insert(0, path)
+from libstdcxx.v6.printers import register_libstdcxx_printers
+
+import libstdcxx.v6.printers
+import libstdcxx.v6.xmethods
+import boost
+import boost.latest
+
+libstdcxx.v6.printers.register_libstdcxx_printers(None)
+libstdcxx.v6.xmethods.register_libstdcxx_xmethods(None)
+boost.register_printers(None)
+
+import ndn_gdb
+ndn_gdb.register_ndn_printers(None)
+end
